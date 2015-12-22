@@ -114,7 +114,7 @@ angular.module('app.controllers', [])
 	$scope.sendToMe = function(){
 		$http({
 		  method: 'GET',
-		  url: host+'getPaperById.php?content='+$scope.cao.content+'&contact='+$scope.cao.contact
+		  url: host+'advice.php?content='+$scope.cao.content+'&contact='+$scope.cao.contact
 		}).then(function successCallback(response) {
 			alert('感谢您的真诚回馈！开发者会认真听取您的意见并将前端关注做得更好！')
 		}, function errorCallback(response) {

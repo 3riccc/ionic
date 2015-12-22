@@ -7,10 +7,26 @@
                 <button class="button button-clear button-light" ng-click="searchStart()">搜索</button>
             </div>
         </form>
-        <div ng-show="showItems.paperList" ng-repeat="item in list" class="list card">
+        <!-- <div ng-show="showItems.paperList" ng-repeat="item in list" class="list card">
             <a class="paperInList" href="#/page1/page6/:{{item.id}}"><div class="item item-divider">{{item.title}}——{{item.author}}</div>
             <div class="item item-body"></div></a>
+        </div> -->
+
+        <a class="paperInList" href="#/page1/page6/:{{item.id}}">
+        <div ng-show="showItems.paperList" ng-repeat="item in list" class="card">
+          <div class="item item-divider">
+            {{item.title}}——{{item.author}}
+          </div>
+          <div class="item item-text-wrap">
+            {{item.abstract}}
+          </div>
+          <div class="item item-divider">
+            {{item.time}}
+          </div>
         </div>
+        </a>
+
+
         <div ng-show="showItems.searching" class="loader" style="background:url(img/loader.gif) no-repeat;width:100px;height:100px;"></div>
     </ion-content>
 </ion-view>
