@@ -1,0 +1,17 @@
+<ion-view title="前端关注－今天">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <form class="list"></form>
+        <h3 ng-bind="paperTitle"></h3>
+        <ion-list></ion-list>
+        <div>
+            <span>作者：&nbsp&nbsp</span><span ng-bind="paperAuthor"></span>
+        </div>
+        <ion-list></ion-list>
+        <div class="tag">
+            <span>标签：&nbsp&nbsp</span><span ng-bind="paperTag"></span>
+        </div>
+        <div ng-bind-html="paperContent">
+        </div>
+        <div ng-show="showItems.searching" class="loader" style="background:url(img/loader.gif) no-repeat;width:100px;height:100px;"></div>
+    </ion-content>
+</ion-view>

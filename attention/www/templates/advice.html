@@ -1,0 +1,14 @@
+<ion-view title="槽">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <form class="list">
+            <h4>如果您对此产品有怎样的建议，请尽情的批评我吧</h4>
+            <div class="item item-input" name="我的吐槽">
+                <textarea ng-model="cao.content" placeholder="我的吐槽"></textarea>
+            </div>
+            <div class="item item-input">
+                <input type="text" ng-model="cao.contact" placeholder="本产品不做登录，请留下联系方式！">
+            </div>
+        </form>
+        <button class="button button-positive button-block" ng-click="sendToMe()">Send To Developer</button>
+    </ion-content>
+</ion-view>
