@@ -12,8 +12,8 @@
             <div class="item item-body"></div></a>
         </div> -->
 
-        <a class="paperInList" href="#/page1/page6/:{{item.id}}">
-        <div ng-show="showItems.paperList" ng-repeat="item in list" class="card">
+        <a class="paperInList" ng-repeat="item in list" href="#/page1/page6/:{{item.id}}">
+        <div ng-show="showItems.paperList" class="card">
           <div class="item item-divider">
             {{item.title}}——{{item.author}}
           </div>
