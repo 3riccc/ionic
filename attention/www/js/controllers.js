@@ -1,7 +1,11 @@
 // 定义全局接口主机地址
 var host = 'http://siida.cn/me/attention-back/';
 angular.module('app.controllers', [])
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider){
 
+        $ionicConfigProvider.tabs.position('bottom');
+
+})
 // 今日文章
 .controller('todayCtrl', function($scope,$http) {
 	// 加载中
