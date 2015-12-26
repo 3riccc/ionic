@@ -1,5 +1,6 @@
 <ion-view title="历史文章">
     <ion-content overflow-scroll="true" padding="true" class="has-header">
+    <ion-refresher on-refresh="refresh()"></ion-refresher>
     <form class="list"></form>
         <h3 ng-bind="paperTitle"></h3>
         <ion-list></ion-list>

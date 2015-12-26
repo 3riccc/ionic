@@ -23,6 +23,26 @@ angular.module('app.controllers', [])
 		$scope.showItems.searching = false;
 	    $scope.paperContent = '网络不佳，请您检查网络连接';
 	});
+
+	// 下拉刷新
+	$scope.refresh = function(){
+		$http({
+		  method: 'GET',
+		  url: host+'getPaper.php'
+		}).then(function successCallback(response) {
+			// 已经获取了今天的文章
+			$scope.showItems.searching = false;
+			$scope.paperContent = response.data.content;
+			$scope.paperTitle = response.data.title;
+			$scope.paperTag = response.data.tag;
+			$scope.paperAuthor = response.data.author;
+			$scope.$broadcast("scroll.refreshComplete");
+		}, function errorCallback(response) {
+			$scope.showItems.searching = false;
+		    $scope.paperContent = '网络不佳，请您检查网络连接';
+			$scope.$broadcast("scroll.refreshComplete");
+		});
+	}
 })
 // 历史文章列表
 .controller('historyCtrl', function($scope,$http) {
@@ -31,6 +51,7 @@ angular.module('app.controllers', [])
 		paperList : false,
 		searching : true
 	}
+	// 像服务端请求内容
 	$http({
 	  method: 'GET',
 	  url: host+'getPaperList.php'
@@ -43,6 +64,24 @@ angular.module('app.controllers', [])
 		$scope.showItems.paperList = true;
 		$scope.showItems.searching = false;
 	});
+
+	// 下拉刷新
+	$scope.refresh = function(){
+		$http({
+		  method: 'GET',
+		  url: host+'getPaperList.php'
+		}).then(function successCallback(response) {
+			console.log(response);
+			$scope.showItems.paperList = true;
+			$scope.showItems.searching = false;
+			$scope.list = response.data;
+			$scope.$broadcast("scroll.refreshComplete");
+		}, function errorCallback(response) {
+			$scope.showItems.paperList = true;
+			$scope.showItems.searching = false;
+			$scope.$broadcast("scroll.refreshComplete");
+		});
+	}
 
 	// 默认搜索内容为空
 	$scope.searchInput = {
@@ -90,6 +129,7 @@ angular.module('app.controllers', [])
 		}
 	}
 
+	// 从后台获取数据
 	$http({
 	  method: 'GET',
 	  url: host+'getPaperById.php?id='+$scope.paperId
@@ -103,6 +143,25 @@ angular.module('app.controllers', [])
 		$scope.showItems.searching = false;
 	    $scope.paperContent = '网络不佳，请您检查网络连接';
 	});
+
+	// 下拉刷新
+	$scope.refresh = function(){
+		$http({
+		  method: 'GET',
+		  url: host+'getPaperById.php?id='+$scope.paperId
+		}).then(function successCallback(response) {
+			$scope.showItems.searching = false;
+			$scope.paperContent = response.data.content;
+			$scope.paperTitle = response.data.title;
+			$scope.paperTag = response.data.tag;
+			$scope.paperAuthor = response.data.author;
+			$scope.$broadcast("scroll.refreshComplete");
+		}, function errorCallback(response) {
+			$scope.showItems.searching = false;
+		    $scope.paperContent = '网络不佳，请您检查网络连接';
+			$scope.$broadcast("scroll.refreshComplete");
+		});
+	}
 })
 .controller('adviceCtrl', function($scope,$http) {
 	$scope.cao = {
